@@ -1,0 +1,186 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Wayfare: book train, bus and flight tickets</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-m="train">
+
+<div class="w">
+
+  <nav>
+    <div class="logo"><i></i>Wayfare</div>
+    <span class="pill">Multithreaded demo · no real bookings</span>
+  </nav>
+
+  <section class="hero">
+
+    <svg class="route" viewBox="0 0 520 220" fill="none" aria-hidden="true">
+      <path d="M20 190C140 20 260 230 360 100S470 30 500 40"
+      stroke="currentColor" stroke-width="3" stroke-dasharray="3 12"
+      stroke-linecap="round"/>
+
+      <circle cx="20" cy="190" r="9" fill="currentColor"/>
+      <circle cx="500" cy="40" r="9" stroke="currentColor" stroke-width="3"/>
+    </svg>
+
+    <h1>One place for every <em>journey</em></h1>
+
+    <p>
+      Intercity or local, train, bus or flight: choose your own seat.
+      Watch customer threads race for seats in real time while a lock
+      keeps yours safe.
+    </p>
+
+  </section>
+
+  <form class="search" id="f" novalidate>
+
+    <div class="modes" role="group" aria-label="Travel mode" id="modes">
+
+      <button type="button" data-m="train" aria-pressed="true">
+        <svg class="ic" viewBox="0 0 24 24">
+          <rect x="5" y="3" width="14" height="14" rx="4"/>
+          <path d="M5 11h14M9 21l2-4M15 21l-2-4"/>
+        </svg>
+        Train
+      </button>
+
+      <button type="button" data-m="bus" aria-pressed="false">
+        <svg class="ic" viewBox="0 0 24 24">
+          <rect x="4" y="3" width="16" height="15" rx="3"/>
+          <path d="M4 11h16M7 21v-3M17 21v-3"/>
+        </svg>
+        Bus
+      </button>
+
+      <button type="button" data-m="flight" aria-pressed="false">
+        <svg class="ic" viewBox="0 0 24 24">
+          <path d="M3 11l18-8-6 18-3-8z"/>
+        </svg>
+        Flight
+      </button>
+
+    </div>
+
+    <div class="sorts svc" id="svc" role="group" aria-label="Service type">
+      <button type="button" data-s="inter" aria-pressed="true">Intercity</button>
+      <button type="button" data-s="local" aria-pressed="false">Local</button>
+    </div>
+
+    <div class="fields">
+
+      <div>
+        <label for="from">From</label>
+        <input id="from" list="cities" placeholder="Mumbai" autocomplete="off">
+      </div>
+
+      <button type="button" class="swap" id="swap" aria-label="Swap from and to">
+        &#8646;
+      </button>
+
+      <div>
+        <label for="to">To</label>
+        <input id="to" list="cities" placeholder="Delhi" autocomplete="off">
+      </div>
+
+      <div>
+        <label for="date">Date</label>
+        <input id="date" type="date">
+      </div>
+
+      <div>
+        <label for="pax">Travellers</label>
+        <input id="pax" type="number" min="1" max="6" value="1">
+      </div>
+
+      <button class="go" type="submit">Search</button>
+
+    </div>
+
+    <datalist id="cities"></datalist>
+
+    <div class="chips" id="chips">
+      <span>Popular:</span>
+
+      <button type="button" class="chip" data-r="Mumbai|Pune">
+        Mumbai to Pune
+      </button>
+
+      <button type="button" class="chip" data-r="Ahmedabad|Delhi">
+        Ahmedabad to Delhi
+      </button>
+
+      <button type="button" class="chip" data-r="Bengaluru|Goa">
+        Bengaluru to Goa
+      </button>
+    </div>
+
+    <div class="msg" id="msg" role="alert"></div>
+
+  </form>
+
+  <div class="steps" id="steps">
+
+    <div>
+      <b>1</b>
+      <p>Search your route and date.</p>
+    </div>
+
+    <div>
+      <b>2</b>
+      <p>Compare options and sort by price or speed.</p>
+    </div>
+
+    <div>
+      <b>3</b>
+      <p>Pick seats while live booking threads compete. A lock keeps yours safe.</p>
+    </div>
+
+    <div>
+      <b>4</b>
+      <p>Confirm and get your ticket instantly.</p>
+    </div>
+
+  </div>
+
+  <section id="res" hidden>
+
+    <div class="rh">
+      <h2 id="rt"></h2>
+
+      <div class="sorts" id="sorts">
+        <button data-k="price" aria-pressed="true">Cheapest</button>
+        <button data-k="dur" aria-pressed="false">Fastest</button>
+        <button data-k="dep" aria-pressed="false">Earliest</button>
+      </div>
+    </div>
+
+    <div id="list"></div>
+
+  </section>
+
+  <footer>
+    Wayfare is a college demo. Seat availability is simulated.
+  </footer>
+
+</div>
+
+<dialog id="dlg" aria-labelledby="dt"></dialog>
+<dialog id="cfm" aria-labelledby="ct"></dialog>
+
+<div class="toast" id="toast" role="status" popover="manual"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+```
